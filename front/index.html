@@ -16,9 +16,13 @@
     </div>
     <form id="todo-form">
       <input type="text" placeholder="today's todo" name="todayinput" />
-      <button type="button" onclick="addTodo()">작성</button>
+      <button type="button" onclick="addTodo()" onkeypress="enterkey()">
+        작성
+      </button>
     </form>
-    <ul class="todos"></ul>
+    <ul class="todos">
+      <li></li>
+    </ul>
   </body>
   <script defer src="./public/index.js"></script>
 </html>

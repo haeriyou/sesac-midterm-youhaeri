@@ -3,7 +3,7 @@
 async function getTodos() {
   axios({
     method: "get",
-    url: "  ",
+    url: "https://jsonplaceholder.typicode.com/todos",
   }).then((res) => {
     const todoContainer = document.querySelector("#todo-form");
     const todos = document.querySelector(".todos");
@@ -19,7 +19,7 @@ async function getTodos() {
 function addTodo() {
   const todoContainer = document.querySelector("#todo-form");
   const todos = document.querySelector(".todos");
-  todoContainer.addEventListener("submit", (e) => {
+  todoContainer.addEventListener("submit", () => {
     e.preventDefault();
     const todoInput = document.querySelector('input[name="todayinput"]');
 
@@ -27,6 +27,7 @@ function addTodo() {
 
     if (todos !== "") {
       const li = document.createElement("li");
+      const chkbox = document.createElement("button");
       li.textContent.todos;
       todos.append(li);
     } else {
@@ -38,7 +39,18 @@ function addTodo() {
 
 /*  3. x 버튼을 클릭하면 클릭한 버튼을 갖는 Todo 항목이 삭제됩니다. */
 // 삭제 함수의 이름 및 모양 변경 가능
-function deleteTodo(item) {}
+function deleteTodo(item) {
+  axios({
+    method: "delete",
+    data: {
+      id: id,
+    },
+  })
+    .then((item) => {
+      btn.closest(`tr_${id}`).remove();
+    })
+    .catch((err) => console.log(err));
+}
 
 /* 
  4. Todo 목록 불러오기,  
