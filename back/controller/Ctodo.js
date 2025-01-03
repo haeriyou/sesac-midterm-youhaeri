@@ -14,7 +14,7 @@ exports.readAll = async (req, res) => {
 /* Todo 한 개 불러오기 */
 exports.readOne = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params.id;
     const todos = await Todo.fineOne({
       where: { id },
     });
@@ -53,10 +53,10 @@ exports.update = async (req, res) => {
 /* 기존 Todo 삭제 */
 exports.delete = async (req, res) => {
   try {
-    const { todoId } = req.params;
+    const { todos } = req.params.id;
     const isDeleted = await Todo.destroy({
       where: {
-        id: id,
+        id: todos,
       },
     });
     if (Boolean(isDeleted)) {
