@@ -14,9 +14,9 @@ exports.readAll = async (req, res) => {
 /* Todo 한 개 불러오기 */
 exports.readOne = async (req, res) => {
   try {
-    const { todoId } = req.params;
+    const { id } = req.params;
     const todos = await Todo.fineOne({
-      where: { id: todoId },
+      where: { id },
     });
     res.send(todos);
   } catch (err) {
@@ -28,6 +28,8 @@ exports.readOne = async (req, res) => {
 /* 새로운 Todo 생성 */
 exports.create = async (req, res) => {
   try {
+    const todos = await Todo.create(req.body);
+    res.send("response");
   } catch (err) {
     console.log("internal server error", err);
     res.status(500).send("Todo not found");
@@ -37,11 +39,11 @@ exports.create = async (req, res) => {
 /* 기존 Todo 수정 */
 exports.update = async (req, res) => {
   try {
-    const updateTodo = await Todo.update(
+    const todos = await Todo.update(
       { title: req.body.title },
       { where: { id: req.body.id } }
     );
-    res.send(updateTodo);
+    res.send(todos);
   } catch (err) {
     console.log("internal server error", err);
     res.status(500).send("Todo not found");
