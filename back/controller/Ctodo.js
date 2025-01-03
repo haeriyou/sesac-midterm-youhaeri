@@ -28,7 +28,7 @@ exports.readOne = async (req, res) => {
 /* 새로운 Todo 생성 */
 exports.create = async (req, res) => {
   try {
-    const todos = await Todo.create(req.body);
+    const todos = await Todo.create(req.body.title);
     res.send("response");
   } catch (err) {
     console.log("internal server error", err);
